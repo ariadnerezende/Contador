@@ -26,24 +26,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(amb.root)
 
 
-            amb.inicialEt.addTextChangedListener(object: TextWatcher{
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                    //NSA
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    contador = s.toString().toInt()
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-                    //NSA
-                }
-            })
+        amb.inicialCb.setOnClickListener{
+            if(amb.inicialCb.isChecked){
+                contador = amb.inicialCb.text.toString().toInt()
+            }
+            else{
+                contador = 0
+            }
+        }
 
         amb.CliqueBt.setOnClickListener{
             amb.contadorTv.text = ((++contador).toString())
