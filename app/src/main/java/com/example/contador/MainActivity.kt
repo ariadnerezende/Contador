@@ -26,12 +26,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(amb.root)
 
 
-        amb.inicialCb.setOnClickListener{
-            if(amb.inicialCb.isChecked){
-                contador = amb.inicialCb.text.toString().toInt()
-            }
-            else{
-                contador = 0
+        amb.zeroRb.setOnClickListener{
+            contador = amb.zeroRb.text.toString().toInt()
+
+            amb.dezRb.setOnClickListener{
+                contador = 10
             }
         }
 
