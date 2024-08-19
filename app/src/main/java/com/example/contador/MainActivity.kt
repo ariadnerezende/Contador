@@ -6,6 +6,8 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -26,11 +28,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(amb.root)
 
 
-        amb.zeroRb.setOnClickListener{
-            contador = amb.zeroRb.text.toString().toInt()
+        amb.inicialSp.onItemSelectedListener = object: OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?, //o proprio spinner com todos os objetos
+                view: View?, //item que foi clicado
+                position: Int, //tipo da posição 1
+                id: Long //como não definiu um ID, um ID genérico é criado
+            )
+            {
+                contador = when(position){
+                    0 -> 0
+                    1 -> 5
+                    2 -> 10
+                    else -> 0 //Necessário para esgotar as opções quando when é usado como expressão.
+                }
+            }
 
-            amb.dezRb.setOnClickListener{
-                contador = 10
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                //NSA
             }
         }
 
